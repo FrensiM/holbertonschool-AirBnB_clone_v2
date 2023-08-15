@@ -30,11 +30,9 @@ def pyt_txt(text='is cool'):
     return result
 
 
-@app.route('/number/')
 @app.route('/number/<int:n>', strict_slashes=False)
 def num_txt(n):
-    result = f"{n} is a number"
-    return result
+    return '{} is a number'.format(n)
 
 
 if __name__ == "__main__":

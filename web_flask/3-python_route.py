@@ -5,17 +5,17 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def hello_hbnb():
     return 'Hello HBNB!'
 
 
-@app.route('/hbnb')
+@app.route('/hbnb', strict_slashes=False)
 def hbnb():
     return 'HBNB'
 
 
-@app.route('/c/<text>')
+@app.route('/c/<text>', strict_slashes=False)
 def str_txt(text):
     formatted_text = text.replace('_', ' ')
     result = f"C {formatted_text}"
@@ -23,7 +23,7 @@ def str_txt(text):
 
 
 @app.route('/python/')
-@app.route('/python/<text>')
+@app.route('/python/<text>', strict_slashes=False)
 def pyt_txt(text='is cool'):
     for_txt = text.replace('_', ' ')
     result = f"Python {for_txt}"
