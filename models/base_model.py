@@ -6,6 +6,10 @@ from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import String, Column, DayTime
 
+
+Base = declarative_base()
+
+
 class BaseModel:
     """A base class for all hbnb models"""
     id = Column(String(60), primary_key = True, nullable = False)
@@ -49,4 +53,7 @@ class BaseModel:
         return dictionary
 
     def delete(self):
-        models.storage.delete(self)
+        for key, value in models.storage.all():
+            if value == self:
+                del models.storage.all()[key]
+                break
