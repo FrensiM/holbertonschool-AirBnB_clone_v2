@@ -14,8 +14,8 @@ def state_ls():
     return render_template('7-states_list.html', states=states)
 
 @app.teardown_appcontext
-def st_close():
-    return storage.close()
+def storage_close(self):
+    storage.close()
 
 
 
