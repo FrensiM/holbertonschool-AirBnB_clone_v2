@@ -13,11 +13,10 @@ def state_ls():
     states = storage.all("State").values()
     return render_template('7-states_list.html', states=states)
 
+
 @app.teardown_appcontext
 def storage_close(self):
     storage.close()
-
-
 
 
 if __name__ == "__main__":
