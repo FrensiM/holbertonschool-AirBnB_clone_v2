@@ -14,7 +14,7 @@ app = Flask(__name__)
 @app.route('/states', strict_slashes=False)
 def state_ls():
     states = storage.all("State").values()
-    return render_template('9-states.html', states=states)
+    return render_template('9-states.html', states=states, mode='all')
 
 
 @app.route('/states/<id>', strict_slashes=False)
@@ -24,7 +24,7 @@ def state_id(id):
     for obj in states:
         if obj.id == id:
             state = obj
-    return render_template('9-states.html', state=state)
+    return render_template('9-states.html', state=state, mode='id')
 
 
 @app.teardown_appcontext
