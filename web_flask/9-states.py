@@ -20,7 +20,6 @@ def state_ls():
 @app.route('/states/<id>', strict_slashes=False)
 def state_id(id):
     states = storage.all("State").values()
-    
     for state in states:
         if state.id == id:
             return render_template('9-states.html', states=state, mode='id')
