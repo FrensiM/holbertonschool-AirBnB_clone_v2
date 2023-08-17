@@ -19,12 +19,12 @@ def state_ls():
 
 @app.route('/states/<id>', strict_slashes=False)
 def state_id(id):
-    state = None
     states = storage.all("State").values()
-    for obj in states:
-        if obj.id == id:
-            state = obj
-    return render_template('9-states.html', state=state, mode='id')
+    
+    for state in states:
+        if state.id == id:
+            return render_template('9-states.html', states=state, mode='id')
+    return render_template('9-states.html', states=state, mode=';')
 
 
 @app.teardown_appcontext
